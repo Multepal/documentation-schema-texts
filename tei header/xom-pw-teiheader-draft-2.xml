@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title key="xom-escolios" xml:lang="spa">Escolios a la historia de el origen de los Indios
+                </title>
+                 <!-- What should be the specific title? 
+                 
+                 We are not encoding the entirety of the Ximénez manuscript.
+                -->
+
+                <funder>UVA 3 Cavaliers Rapid Seed Grant Program and the UVA Strategic Investment Fund</funder>
+
+                <sponsor ref="http://multepal.spanitalport.virginia.edu/" xml:lang="quc">Multepal</sponsor>
+
+                <respStmt>
+                    <resp>Graduate and undergraduate students in charge of the first round of TEI encoding for the manuscript.</resp>
+
+                    <persName full="yes">Catherine Addington</persName>
+                    <persName>Karina Baptista</persName>
+                    <persName>Nicole Bonino</persName>
+                    <persName>María Esparza Rodríguez</persName>
+                    <persName>Michelet McClean Estrada</persName>
+                    <persName>Will Norton</persName>
+                    <persName>Dave Prine</persName>
+                    <persName>Matthew Richey</persName>
+                    <persName>Benjamín Romero Salado</persName>
+
+                    <orgName>Course SPAN7559/4995 in the Spanish, Italian, and Portuguese Department at the University of Virginia</orgName>
+
+                    <date>Spring 2017</date>
+                </respStmt>
+
+                <respStmt>
+                    <!-- Needs to be refined. -->
+                    <resp>TEI Encoder</resp>
+
+                    <persName full="yes">Aldo Barriente</persName>
+
+                    <orgName>Undergraduate Student, University of Virginia</orgName>
+                    
+                    <note>
+                        <p></p>
+                    </note>
+                </respStmt>
+           
+                <respStmt>
+                    <resp>TEI Editors</resp>
+                    
+                    <persName full="yes" role="principal">Rafael Alvarado</persName>
+                    <persName full="yes" role="principal">Allison Bigelow</persName>
+                    <persName full="yes" xml:lang="spa">Winnie Pérez Martínez</persName>
+
+                    <orgName>University of Virginia</orgName>
+
+                    <note>
+                        <p>Discussed and established guidelines for using TEI to encode this particular text. Selected which elements were best suited to the text's needs and produced a TEI header accordingly.</p>
+                    </note>
+                </respStmt>
+
+                <respStmt>
+                    <resp>Project Leaders</resp>
+
+                    <persName role="principal" full="yes">Rafael Alvarado</persName>
+                    <persName role="principal" full="yes">Allison Bigelow</persName>                    
+                    <orgName>University of Virginia</orgName>
+                </respStmt>
+
+                <!-- I didn't include names of students who worked on the site here because the annotations are stored elsewhere within Drupal, if I remember correctly. -->
+            </titleStmt>
+            
+            <sourceDesc>
+                <biblStruct>
+                    <monogr>
+                        <author xml:lang="spa">Ximénez, Francisco</author>
+                        <author xml:lang="quc">Nim Chokoj k'ut chuwach Kaweqib' <seg xml:lang="spa">(Madres y padres de la palabra ante los Kaweq.)</seg></author>
+                        <author xml:lang="quc">chuwach Nija'ib', ukab' k'u ri' <seg xml:lang="spa">(Madres y padres de la palabra ante los Nijayib’)</seg></author>
+                        <author xml:lang="quc">Nim Chokoj Ajaw chuwach Ajaw K'iche', rox Nim Chokoj <seg xml:lang="spa">(Madres y padres de la palabra ante el AJaw  K’iche’)</seg></author>
+
+                        <!-- Good place for a TK tag. It would discuss the three k'iche' authors and:
+                            <publisher>Le winaq</publisher>
+                            <pubPlace>Iximulew</pubPlace>
+                         -->
+
+                        <title xml:lang="spa">Arte de las tres lenguas kakchiquel, quiché y ꜩutuhil,v.2 Popol vuh; and Escolios a la historia de el origen de los Indios.</title>
+
+                        <imprint>
+                            <publisher>The Newberry Library</publisher>
+                            
+                            <pubPlace>Chicago, Illinois, USA</pubPlace>
+
+                            <date>1701-1703</date>
+                        </imprint>
+                    </monogr>
+                </biblStruct>
+                <note>
+                    <p>The encoding is based on the Newberry Library's VAULT Ayer MS 1515, volume 2, Escolios Folio 01, Side 1. Based on the facsimiles provided by online edition of the Popol Wuj hosted by The Ohio State University Libraries at https://library.osu.edu/projects/popolwujs.</p>
+                </note>
+            </sourceDesc> 
+        </fileDesc>
+        
+        <encodingDesc>
+                <editorialDecl>
+                    <!-- BRING FROM ESCOLIOS HEADER -->
+                    <!-- encodingDesc: Describes the relationship between an electronic text and the source or sources from which it was derived. It allows for detailed description of whether (or how) the text was normalized during transcription, how the encoder resolved ambiguities in the source, what levels of encoding or analysis were applied, and similar matters. The TEI elements used to encode the encoding description are described in section 2.3 The Encoding Description below. -->
+
+                    <p>It allows for line by line search and provides additional, crowdsourced annotations that include the realm of topics present in the narrative. Special characters are maintained in the main text, but transformed into roman alphabet characters to increase searchability of content.</p>
+                </editorialDecl>
+
+                <projectDesc>
+                    <p>Describe the Multepal project here.</p>
+                </projectDesc>
+
+
+                <p>The following text is encoded in accordance with TEI standards and with the CTS/CITE Architecture</p>
+
+                <refsDecl n="CTS">
+                    <cRefPattern n="paragraph" 
+                                matchPattern="(\w+)" 
+                                replacementPattern="#xpath(/tei:TEI/tei:text/tei:body/tei:div/tei:div[@n='$1'])">
+                        <p>pointer pattern extracting paragraph</p>
+                    </cRefPattern>
+                </refsDecl>
+                <refsDecl>
+                    <refState unit="paragraph"/>
+                </refsDecl>
+
+                <classDecl>
+                <!--Classification declarations. Contains one or more taxonomies defining any classificatory codes used elsewhere in the text. SHOULD BE INCLUDESD FROM AN XML VERSION OF TOPICS? --> 
+            <taxonomy>
+               <category></category>
+            </taxonomy>
+         </classDecl>
+        </encodingDesc>
+
+        <profileDesc>
+            <p>
+                 <!-- THIS DESCRIBES THE ORIGINAL DOCUMENT OR SOURCE (XIMENEZ, K'ICHE', etc.) -->
+      
+                 <!-- The text profile, tagged profileDesc, containing classificatory and contextual information about the text, such as its subject matter, the situation in which it was produced, the individuals described by or participating in producing it, and so forth. Such a text profile is of particular use in highly structured composite texts such as corpora or language collections, where it is often highly desirable to enforce a controlled descriptive vocabulary or to perform retrievals from a body of text in terms of text type or origin. The text profile may however be of use in any form of automatic text processing. -->
+            </p>
+
+            <langUsage>
+                <language ident="quc">K'iche'</language>
+                <language ident="spa">Spanish</language>
+            </langUsage>
+        </profileDesc>
+
+
+        <!-- 
+            MISSING TAGS (INCLUDED IN ESCOLIOS HEADER)
+            <classDecl>
+                Goes inside the encodingDesc
+                <taxonomy>
+                    <category></category>
+                </taxonomy>
+            </classDecl>
+
+            <xenoData>
+                Not TEI. 
+                <p>Describe use of TK here.</p>
+            </xenoData>
+
+            <revisionDesc>
+                Don't think we need this.
+                <change></change>
+                <change></change>
+            </revisionDesc>
+         -->
+    </teiHeader>
+</TEI>
