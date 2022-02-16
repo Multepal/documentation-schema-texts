@@ -15,7 +15,7 @@ Every new rule, element, module, or attribute declaration must be inside [text/b
 </text>
 `
 
-To add, change or delete an element, you must edit its information within the <elementSpec>. 
+To add, change or delete an element, you must edit its information within elementSpec. 
 
 `
 <elementSpec iden="elementName" mode="add, change, replace, or delete">
