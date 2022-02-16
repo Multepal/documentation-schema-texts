@@ -1,7 +1,7 @@
 # documentation-schema-texts
 Development space for the TEI ODD and headers that will be used to validate all source texts to be ingested by Multepal/aanalte.
 
-# Basic Documentation for the Multepal.odd
+## Basic Documentation for the Multepal.odd
 
 Every new rule, element, module, or attribute declaration must be inside [text/body/schemaSpec]
 
