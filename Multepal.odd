@@ -24,7 +24,7 @@
     <body>
       
       <schemaSpec ident="oddex1" start="TEI">
-        <moduleRef key="analysis"/>
+        <moduleRef key="analysis" include="pc span"/>
         <moduleRef key="core"/>
         <moduleRef key="drama"/>
         <moduleRef key="header"/>
@@ -36,6 +36,20 @@
         <moduleRef key="textstructure"/>
         <moduleRef key="transcr"/>
         <moduleRef key="spoken"/>
+        
+        
+        <elementSpec ident="div" mode="change" module="textstructure">
+          <attList>
+            <attDef ident="type" mode="replace" usage="req">
+              <valList type="closed">
+                <valItem ident="toc">
+                  <desc>K'iche' word for section in Ximénez (?) </desc>
+                </valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
+        
       </schemaSpec>
     </body>
   </text>
