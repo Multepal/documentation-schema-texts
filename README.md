@@ -1,5 +1,5 @@
 # documentation-schema-texts
-Development space for the TEI ODD and headers that will be used to validate all source texts to be ingested by Multepal/aanalte.
+Development space for the TEI ODD and TEI headers used to validate all source texts to be ingested by Multepal/aanalte.
 
 ## Basic Documentation for the Multepal.odd
 
