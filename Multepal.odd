@@ -28,13 +28,13 @@
         <moduleRef key="core"/>
         <moduleRef key="drama"/>
         <moduleRef key="header"/>
-        <moduleRef key="linking"/>
+        <moduleRef key="linking" include="seg"/>
         <moduleRef key="msdescription"/>
-        <moduleRef key="namesdates"/>
+        <moduleRef key="namesdates" include="orgName persName person"/>
         <moduleRef key="tagdocs"/>
         <moduleRef key="tei"/>
-        <moduleRef key="textstructure"/>
-        <moduleRef key="transcr"/>
+        <moduleRef key="textstructure" exclude="div1 div2 div3 div4 div5 div6 div7"/>
+        <moduleRef key="transcr" include="space"/>
         <moduleRef key="spoken"/>
         
         
@@ -50,6 +50,24 @@
           </attList>
         </elementSpec>
         
+        <!-- Changing element specs in Core -->
+        <elementSpec ident="note" mode="change" module="core">
+          <attList>
+            <attDef ident="place" mode="replace" usage="req">
+              <valList type="closed">
+                <valItem ident="margin-left">
+
+                </valItem>
+                <valItem ident="margin-right">
+
+                </valItem>
+                <valItem ident="margin-middle">
+                  
+                </valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
       </schemaSpec>
     </body>
   </text>
