@@ -10,6 +10,7 @@
        <authority> Prepared in TEI P5 by Aldo Ismael Barriente and Winnie Pérez Martínez at the University of Virginia. </authority>
        <publisher>Multepal Project</publisher>
         <availability status="free">
+          <p></p>
           <!-- add elements + info about distribution and licensing -->
         </availability>
       </publicationStmt>
@@ -51,7 +52,7 @@
         </elementSpec>
         
         <!-- Changing element specs in Core -->
-        <classSpec module="core" type="model" ident="model.rendering">
+        <classSpec type="atts" module="core" ident="att.placement" mode="change">
           <attList>
             <attDef ident="place" mode="replace" usage="opt">
               <valList type="closed">
