@@ -51,23 +51,20 @@
         </elementSpec>
         
         <!-- Changing element specs in Core -->
-        <elementSpec ident="note" mode="change" module="core">
+        <classSpec module="core" type="model" ident="model.rendering">
           <attList>
-            <attDef ident="place" mode="replace" usage="req">
+            <attDef ident="place" mode="replace" usage="opt">
               <valList type="closed">
-                <valItem ident="margin-left">
-
-                </valItem>
-                <valItem ident="margin-right">
-
-                </valItem>
-                <valItem ident="margin-middle">
-                  
-                </valItem>
+                <valItem ident="margin(left)" />
+                <valItem ident="margin(right)" />
+                <valItem ident="margin(single-col)" />
+                <valItem ident="margin(bottom)" />
+                <valItem ident="margin(middle)" />
               </valList>
             </attDef>
           </attList>
-        </elementSpec>
+        </classSpec>
+
       </schemaSpec>
     </body>
   </text>
