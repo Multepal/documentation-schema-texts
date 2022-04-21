@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
-  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0">
+  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron">  
   <teiHeader>
     <fileDesc>
       <titleStmt>
@@ -65,6 +66,16 @@
             </attDef>
           </attList>
         </classSpec>
+
+        <constraintSpec scheme="schematron" ident="rsAnaCheck">
+          <constraint>
+            <sch:rule context="tei:TEI//@ana">
+              <sch:report test="matches(., '[a-z]+')" role="warning">
+                @ana attribute values must be written in uppercase.
+              </sch:report>
+            </sch:rule>
+          </constraint>
+        </constraintSpec>
 
       </schemaSpec>
     </body>
