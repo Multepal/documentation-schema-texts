@@ -6,7 +6,7 @@
       <fileDesc>
          <titleStmt>
             <title>Francisco Ximénez: Encoded Edition of Escolios del Popol Wuj</title>
-            <!-- Change the <title> to fit the context of your TEI file-->
+            <!-- Remember to change the <title> to fit the context of your TEI file-->
          
             <funder>UVA 3 Cavaliers Rapid Seed Grant Program and the UVA Strategic Investment Fund</funder>
             <sponsor ref="http://multepal.spanitalport.virginia.edu/" xml:lang="quc">Multepal</sponsor>
@@ -32,7 +32,6 @@
             </respStmt>
             
             <respStmt>
-               <!-- Needs to be refined. -->
                <resp>Main TEI Encoder</resp>
                
                <persName>Aldo Barriente</persName>
@@ -40,7 +39,7 @@
                <orgName>Undergraduate Student, University of Virginia</orgName>
                
                <note>
-                  <p><!--Describe the work done with a few more details.--></p>
+                  <p>Worked on the mark up of temas and revised the current paragraph structure.</p>
                </note>
             </respStmt>
             
