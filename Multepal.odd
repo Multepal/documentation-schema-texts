@@ -18,16 +18,15 @@
 
         </availability>
       </publicationStmt>
-      <sourceDesc default="false">
-        <p part="N">Born digital, based on the Mayan literature research done by .</p>
+
+      <sourceDesc>
+        <p>Born digital, based on the Mayan literature research done by http://multepal.spanitalport.virginia.edu/users</p>
       </sourceDesc>
     </fileDesc>
 
   </teiHeader>
-
   <text>
     <body>
-
       <schemaSpec defaultExceptions="http://www.tei-c.org/ns/1.0 teix:egXML" ident="oddex1"
         mode="add" ns="http://www.tei-c.org/ns/1.0" predeclare="false" start="TEI" status="draft">
         <moduleRef include="pc span" key="analysis"/>
@@ -42,21 +41,67 @@
         <moduleRef exclude="div1 div2 div3 div4 div5 div6 div7" key="textstructure"/>
         <moduleRef include="space" key="transcr"/>
         <moduleRef key="spoken"/>
-
-
-        <elementSpec ident="div" mode="change" module="textstructure"
-          ns="http://www.tei-c.org/ns/1.0" predeclare="false">
-          <attList org="group">
-            <attDef ident="type" mode="replace" predeclare="false" usage="req">
-              <valList mode="add" type="closed">
-                <valItem ident="toc" mode="add">
+        
+        <!-- Adding attribute values to element classes -->
+        <classSpec type="atts" module="core" ident="att.placement" mode="change">
+          <attList>
+            <attDef ident="place" mode="change" usage="opt">
+              <valList type="semi" mode="add">
+                <valItem ident="margin(left)"/>
+                <valItem ident="margin(right)"/>
+                <valItem ident="margin(single-col)"/>
+                <valItem ident="margin(bottom)"/>
+                <valItem ident="margin(middle)"/>
+              </valList>
+            </attDef>
+          </attList>
+        </classSpec>
+        
+        <classSpec type="atts" module="tei" ident="att.global.rendition" mode="change">
+          <attList>
+            <attDef ident="rend" mode="change" usage="opt">
+              <valList type="semi" mode="add">
+                <valItem ident="indent(hanging)"/>
+                <valItem ident="indent(default)"/>
+                <valItem ident="indent(full-indent)"/>
+                <valItem ident="align(center)"/>
+                <valItem ident="align(justified)"/>
+                <valItem ident="align(single-line)"/>
+                <valItem ident="text-style(bold)"/>
+                <valItem ident="text-style(italic)"/>
+                <valItem ident="text-style(caps)"/>
+                <valItem ident="text-style(underline)"/>
+                <valItem ident="text-style(overstrike)"/>
+                <valItem ident="text-style(strikethrough)"/>
+                <valItem ident="text-style(sup)"/>
+                <valItem ident="text-style(sub)"/>
+                <valItem ident="text-style(scribble)"/>
+                <valItem ident="text-style(double-underline)"/>
+                <valItem ident="size(large)"/>
+                <valItem ident="size(strong)"/>
+                <valItem ident="size(x-large)"/>
+                <valItem ident="size(xx-large)"/>
+                <valItem ident="outliers(border-left)"/>
+                <valItem ident="outliers(border-right)"/>
+              </valList>
+            </attDef>
+          </attList>
+        </classSpec>
+        
+        
+        
+        <!-- TEXTSTRUCTURE: Adding attribute to element classess -->
+        <elementSpec ident="div" mode="change" module="textstructure">
+          <attList>
+            <attDef ident="type" mode="replace" usage="req">
+              <valList type="closed">
+                <valItem ident="toc">
                   <desc>K'iche' word for section in Ximénez (?) </desc>
                 </valItem>
               </valList>
             </attDef>
           </attList>
         </elementSpec>
-
 
         <classSpec type="atts" module="core" ident="att.placement" mode="change">
           <attList>
@@ -71,6 +116,7 @@
             </attDef>
           </attList>
         </classSpec>
+
 
         <constraintSpec ident="rsAnaCheck" mode="add" predeclare="false" scheme="schematron">
           <constraint>
