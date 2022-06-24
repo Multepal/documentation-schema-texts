@@ -1,61 +1,66 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg"
-  xmlns:math="http://www.w3.org/1998/Math/MathML" xmlns="http://www.tei-c.org/ns/1.0"
-  xmlns:sch="http://purl.oclc.org/dsdl/schematron">  
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xi="http://www.w3.org/2001/XInclude"
+  version="2.9.1" xml:lang="en">
   <teiHeader>
     <fileDesc>
       <titleStmt>
         <title>Popol Wuj Encoding Guidelines</title>
       </titleStmt>
       <publicationStmt>
-       <authority> Prepared in TEI P5 by Aldo Ismael Barriente and Winnie Pérez Martínez at the University of Virginia. </authority>
-       <publisher>Multepal Project</publisher>
-        <availability status="free">
-          <p></p>
-          <!-- add elements + info about distribution and licensing -->
+        <authority> Prepared in TEI P5 by Aldo Ismael Barriente and Winnie Pérez Martínez at the
+          University of Virginia. </authority>
+        <publisher>Multepal Project</publisher>
+        <availability default="false" status="free">
+          <p part="N"/>
+
         </availability>
       </publicationStmt>
-      <sourceDesc>
-        <p>Born digital, based on the Mayan literature research done by <!-- insert link to about page of Multepal with all the members -->.</p>
+      <sourceDesc default="false">
+        <p part="N">Born digital, based on the Mayan literature research done by .</p>
       </sourceDesc>
     </fileDesc>
-    <!-- Eventually we will need a <revisionDesc> to log the changes done to the schema over time. -->
+
   </teiHeader>
-  
+
   <text>
     <body>
-      
-      <schemaSpec ident="oddex1" start="TEI">
-        <moduleRef key="analysis" include="pc span"/>
+
+      <schemaSpec defaultExceptions="http://www.tei-c.org/ns/1.0 teix:egXML" ident="oddex1"
+        mode="add" ns="http://www.tei-c.org/ns/1.0" predeclare="false" start="TEI" status="draft">
+        <moduleRef include="pc span" key="analysis"/>
         <moduleRef key="core"/>
         <moduleRef key="drama"/>
         <moduleRef key="header"/>
-        <moduleRef key="linking" include="seg"/>
+        <moduleRef include="seg" key="linking"/>
         <moduleRef key="msdescription"/>
-        <moduleRef key="namesdates" include="orgName persName person"/>
+        <moduleRef include="orgName persName person" key="namesdates"/>
         <moduleRef key="tagdocs"/>
         <moduleRef key="tei"/>
-        <moduleRef key="textstructure" exclude="div1 div2 div3 div4 div5 div6 div7"/>
-        <moduleRef key="transcr" include="space"/>
+        <moduleRef exclude="div1 div2 div3 div4 div5 div6 div7" key="textstructure"/>
+        <moduleRef include="space" key="transcr"/>
         <moduleRef key="spoken"/>
-        
-        
-        <elementSpec ident="div" mode="change" module="textstructure">
-          <attList>
-            <attDef ident="type" mode="replace" usage="req">
-              <valList type="closed">
-                <valItem ident="toc">
+
+
+        <elementSpec ident="div" mode="change" module="textstructure"
+          ns="http://www.tei-c.org/ns/1.0" predeclare="false">
+          <attList org="group">
+            <attDef ident="type" mode="replace" predeclare="false" usage="req">
+              <valList mode="add" type="closed">
+                <valItem ident="toc" mode="add">
                   <desc>K'iche' word for section in Ximénez (?) </desc>
                 </valItem>
               </valList>
             </attDef>
           </attList>
         </elementSpec>
-        
-        <!-- Changing element specs in Core -->
+
+
         <classSpec type="atts" module="core" ident="att.placement" mode="change">
           <attList>
-            <attDef ident="place" mode="replace" usage="opt">
+            <attDef ident="place" mode="change" usage="opt">
               <valList type="closed">
                 <valItem ident="margin(left)" />
                 <valItem ident="margin(right)" />
@@ -67,15 +72,458 @@
           </attList>
         </classSpec>
 
-        <constraintSpec scheme="schematron" ident="rsAnaCheck">
+        <constraintSpec ident="rsAnaCheck" mode="add" predeclare="false" scheme="schematron">
           <constraint>
             <sch:rule context="tei:TEI//@ana">
-              <sch:report test="matches(., '[a-z]+')" role="warning">
-                @ana attribute values must be written in uppercase.
-              </sch:report>
+              <sch:report role="warning" test="matches(., '[a-z]+')"> @ana attribute values must be
+                written in uppercase. </sch:report>
             </sch:rule>
           </constraint>
         </constraintSpec>
+        <elementSpec ident="rs" mode="change" module="core" xml:lang="quc">
+          <attList>
+            <attDef ident="ana" mode="replace" usage="req">
+              <valList type="closed">
+                <valItem ident="ACHAQ'_IB'OY"/>
+                <valItem ident="AJ"/>
+                <valItem ident="AJ_KAB'RAQAN"/>
+                <valItem ident="AJACHE'"/>
+                <valItem ident="AJAL_MES"/>
+                <valItem ident="AJAL_PUJ"/>
+                <valItem ident="AJAL_Q'ANA"/>
+                <valItem ident="AJAL_TOQ'OB"/>
+                <valItem ident="AJAW_AJTZIK_WINAQ"/>
+                <valItem ident="AJAW_AWILIX"/>
+                <valItem ident="AJAW_JAQAWITZ"/>
+                <valItem ident="AJAW_K'ICHE'"/>
+                <valItem ident="AJAW_K'OTUJA_NJONCE"/>
+                <valItem ident="AJAW_LOLMET"/>
+                <valItem ident="AJAW_NIM_CH'OKOJ"/>
+                <valItem ident="AJAW_Q'ALEL"/>
+                <valItem ident="AJAW_Q'ALEL_NJDOCE"/>
+                <valItem ident="AJAW_Q'ALEL_K'AMJA"/>
+                <valItem ident="AJB'ATENA_JA"/>
+                <valItem ident="AJCH'UMILA_JA"/>
+                <valItem ident="AJCH'UT"/>
+                <valItem ident="AJK'UWAL"/>
+                <valItem ident="AJKIB'A_JA"/>
+                <valItem ident="AJLATZAB'"/>
+                <valItem ident="AJMOX_WACH"/>
+                <valItem ident="AJMUQULIK_K'U'X"/>
+                <valItem ident="AJPATAN"/>
+                <valItem ident="AJPOP"/>
+                <valItem ident="AJPOP_K'AMJA"/>
+                <valItem ident="AJPOP_SOTZ'IL"/>
+                <valItem ident="AJPOP_XAJIL"/>
+                <valItem ident="AJQ'OL"/>
+                <valItem ident="AJQ'UKUMATZ"/>
+                <valItem ident="AJRAXA_LAQ"/>
+                <valItem ident="AJRAXA_TZEL"/>
+                <valItem ident="AJTOJIL"/>
+                <valItem ident="AJTOLTEKAT"/>
+                <valItem ident="AJTUKUR"/>
+                <valItem ident="AJTZ'ALAM"/>
+                <valItem ident="AJTZ'IKINA_JA"/>
+                <valItem ident="AJTZA"/>
+                <valItem ident="AJTZIK_WINAQ"/>
+                <valItem ident="AJTZIK_WINAQ_AJAW"/>
+                <valItem ident="AJYAMANIK"/>
+                <valItem ident="AKUL_WINAQ"/>
+                <valItem ident="ALOM"/>
+                <valItem ident="MONTENEGRO"/>
+                <valItem ident="AMAQ'_TAM"/>
+                <valItem ident="AMAQ'_TAM"/>
+                <valItem ident="AMAQ'_UQ'IN_K'AT"/>
+                <valItem ident="REMESAL"/>
+                <valItem ident="SANTIAGO"/>
+                <valItem ident="AQ"/>
+                <valItem ident="AWILIX"/>
+                <valItem ident="B'ALAM"/>
+                <valItem ident="B'ALAM_AQ'AB'"/>
+                <valItem ident="B'ALAM_JA"/>
+                <valItem ident="B'ALAM_JA'"/>
+                <valItem ident="B'ALAM_K'ONACHE'_KQTRES"/>
+                <valItem ident="B'ALAM_KI'TZE'"/>
+                <valItem ident="B'ALAM_KOLOB'"/>
+                <valItem ident="B'AQ"/>
+                <valItem ident="B'ATE"/>
+                <valItem ident="B'ATZ'A_NJSEIS"/>
+                <valItem ident="B'ELEJEB'_KEJ"/>
+                <valItem ident="B'ELEJEB'_KEJ_NJCUATRO"/>
+                <valItem ident="B'ELEJEB'_KEJ_NJNUEVE"/>
+                <valItem ident="B'ITOL"/>
+                <valItem ident="B'IX"/>
+                <valItem ident="B'OQOTAJINAQ_SANAYEB'"/>
+                <valItem ident="LAS_CASAS"/>
+                <valItem ident="BELEJEB_TZI_KQDOCE"/>
+                <valItem ident="CARLOS_V"/>
+                <valItem ident="CH'AB'I_TUKUR"/>
+                <valItem ident="CH'ABI_Q'AQ'"/>
+                <valItem ident="CH'ABI_Q'AQ'"/>
+                <valItem ident="CH'AMIYA_B'AQ"/>
+                <valItem ident="CH'AMIYA_JOLOM"/>
+                <valItem ident="CH'IPI_KAQULJA"/>
+                <valItem ident="CH'IPI_NANAWAK"/>
+                <valItem ident="CH'ITIK"/>
+                <valItem ident="CH'O"/>
+                <valItem ident="CHAAJ"/>
+                <valItem ident="CHAJAL_ECHA'"/>
+                <valItem ident="CHAMALKAN"/>
+                <valItem ident="CHAYIM_JA"/>
+                <valItem ident="CHI_CHAQ'"/>
+                <valItem ident="CHI_ISMACHI'"/>
+                <valItem ident="CHI_JUNAJPU"/>
+                <valItem ident="CHI_K'IX"/>
+                <valItem ident="CHI_PIXAB'"/>
+                <valItem ident="CHI_Q'AQ'"/>
+                <valItem ident="CHI_RATINIB'AL_TOJIL"/>
+                <valItem ident="CHICHICASTENANGO"/>
+                <valItem ident="CHIMALMAT"/>
+                <valItem ident="CHITEMAJ"/>
+                <valItem ident="CHOLOCHIK_AB'AJ"/>
+                <valItem ident="CHOMI_JA'"/>
+                <valItem ident="CHULIMAL"/>
+                <valItem ident="CHUQ'ANAL"/>
+                <valItem ident="CHUWA_TZ'AQ"/>
+                <valItem ident="CHUWI'_MEQ'ENA'"/>
+                <valItem ident="DIOS"/>
+                <valItem ident="DOMINGO"/>
+                <valItem ident="DON_CRISTÓBAL_NJDOCE"/>
+                <valItem ident="DON_JUAN_CORTES_KQCATORCE"/>
+                <valItem ident="DON_JUAN_DE_ROJAS_KQCATORCE"/>
+                <valItem ident="DON_PEDRO_DE_ROBLES_NJTRECE"/>
+                <valItem ident="DONADIU"/>
+                <valItem ident="ECHAVE"/>
+                <valItem ident="ESPIRITU_SANTO"/>
+                <valItem ident="EWAB'AL_SIWAN"/>
+                <valItem ident="NORENA"/>
+                <valItem ident="DOMINGO_DE_VICO"/>
+                <valItem ident="FRAY_JUAN_DE_SAN_JOSE"/>
+                <valItem ident="IB'OY"/>
+                <valItem ident="IK"/>
+                <valItem ident="IK'OQ'IJ"/>
+                <valItem ident="ILOKAB'"/>
+                <valItem ident="IQ'I_B'ALAM"/>
+                <valItem ident="ISTAYUL"/>
+                <valItem ident="ISTAYUL_KQCUATRO"/>
+                <valItem ident="ISTAYUL_KQSEIS"/>
+                <valItem ident="ISTAYUL_NJSIETE"/>
+                <valItem ident="ISTAYUL_KQOCHO"/>
+                <valItem ident="IXB'AQIYALO"/>
+                <valItem ident="IXIM"/>
+                <valItem ident="IXKAKAW"/>
+                <valItem ident="IXKIK'"/>
+                <valItem ident="IXMUKANE"/>
+                <valItem ident="IXOQ_AJAWAB'"/>
+                <valItem ident="IXPUCH'"/>
+                <valItem ident="IXQ'ANIL"/>
+                <valItem ident="IXTAJ"/>
+                <valItem ident="IXTAJ_IXPUCH'"/>
+                <valItem ident="IXTOJ"/>
+                <valItem ident="IXTZIYA'"/>
+                <valItem ident="JA_CHI_Q'AQ'"/>
+                <valItem ident="JA'_SIMAJ"/>
+                <valItem ident="JAL"/>
+                <valItem ident="JAQAWITZ"/>
+                <valItem ident="JAQAWITZ_JUYUB"/>
+                <valItem ident="JESUCRISTO"/>
+                <valItem ident="JOJ"/>
+                <valItem ident="JOLOM_OKOX"/>
+                <valItem ident="JOLOM_TUKUR"/>
+                <valItem ident="JOM"/>
+                <valItem ident="SEPULVEDA"/>
+                <valItem ident="JULISNAB'"/>
+                <valItem ident="JUMETA_JA"/>
+                <valItem ident="JUN_B'ATZ'"/>
+                <valItem ident="JUN_B'ATZ'_JUN_CHOWEN"/>
+                <valItem ident="JUN_CHOWEN"/>
+                <valItem ident="JUN_JUNAJPU"/>
+                <valItem ident="JUN_KAME'"/>
+                <valItem ident="JUN_KAME'_WUQUB_KAME"/>
+                <valItem ident="JUN_RAQAN"/>
+                <valItem ident="JUN_TIJAX"/>
+                <valItem ident="JUN_TOJ"/>
+                <valItem ident="JUN_WINAQ"/>
+                <valItem ident="JUNAJPU"/>
+                <valItem ident="JUNAJPU_JUYUB'"/>
+                <valItem ident="JUNAJPU_K'OY"/>
+                <valItem ident="JUNAJPU_UTIW"/>
+                <valItem ident="JUNAJPU_WUCH"/>
+                <valItem ident="JURAQAN_TUKUR"/>
+                <valItem ident="K'AJOLOM"/>
+                <valItem ident="K'ANTI'"/>
+                <valItem ident="K'ASAM_AJ"/>
+                <valItem ident="K'AWEX"/>
+                <valItem ident="K'AYALA'"/>
+                <valItem ident="K'EL"/>
+                <valItem ident="K'ELETZU"/>
+                <valItem ident="K'ENECH_AJAW"/>
+                <valItem ident="K'IKAB'_KQDIEZ"/>
+                <valItem ident="K'IKAB'_KQSIETE"/>
+                <valItem ident="K'O'AJAW_AKDOS"/>
+                <valItem ident="K'O'AKUL"/>
+                <valItem ident="K'O'AKUL_NJDOS"/>
+                <valItem ident="K'O'AKUTEK_NJDOS"/>
+                <valItem ident="K'OCHAJUJ"/>
+                <valItem ident="K'OCHAJUJ_NJTRES"/>
+                <valItem ident="K'OJAJ"/>
+                <valItem ident="K'OKA'IB_KQDOS"/>
+                <valItem ident="K'OKAMEL_AKSIETE"/>
+                <valItem ident="K'OKOSOM_AKCUATRO"/>
+                <valItem ident="K'OQAWIB_KQDOS"/>
+                <valItem ident="K'OTAL"/>
+                <valItem ident="K'OTK'OWACH"/>
+                <valItem ident="K'OTUJA_KQCUATRO"/>
+                <valItem ident="K'OTUJA_KQCINCO"/>
+                <valItem ident="K'OTUJA_NJCINCO"/>
+                <valItem ident="K'OTUJA_NJOCHO"/>
+                <valItem ident="K'OTZ'IB'AJA_NJTRES"/>
+                <valItem ident="K'OY"/>
+                <valItem ident="K'OYABAKOJ_AKOCHO"/>
+                <valItem ident="K'ULB'A"/>
+                <valItem ident="K'ULKU_SIWAN"/>
+                <valItem ident="KA'"/>
+                <valItem ident="KA'IB_K'AJOLAB'"/>
+                <valItem ident="KA'MUL_ALOM"/>
+                <valItem ident="KA'MUL_K'AJOLOM"/>
+                <valItem ident="KAB'"/>
+                <valItem ident="KAB'RAQAN"/>
+                <valItem ident="KAJ"/>
+                <valItem ident="KAJIB'_UNIM_JA"/>
+                <valItem ident="KAK'IXA_JA'"/>
+                <valItem ident="KAKAW"/>
+                <valItem ident="KAMALOTZ'"/>
+                <valItem ident="KANCHAJELEB'"/>
+                <valItem ident="KAQ"/>
+                <valItem ident="KAQA_B'E"/>
+                <valItem ident="KAQA_PALO_JA'"/>
+                <valItem ident="KAQCHIKELEB'"/>
+                <valItem ident="KAQIX_TUKUR"/>
+                <valItem ident="KAQULJA_JUN_RAQAN"/>
+                <valItem ident="KAR"/>
+                <valItem ident="KAWEQ"/>
+                <valItem ident="KAWINAL"/>
+                <valItem ident="KAWISIMAJ_KQSIETE"/>
+                <valItem ident="KAWKEB'"/>
+                <valItem ident="KE'EMA_NJDIEZ"/>
+                <valItem ident="KEJ"/>
+                <valItem ident="KIK'"/>
+                <valItem ident="KIK'_RE"/>
+                <valItem ident="KIK'_RIXK'AQ"/>
+                <valItem ident="KIK'_YA"/>
+                <valItem ident="KINAQ'"/>
+                <valItem ident="KOJ"/>
+                <valItem ident="KOMAJKUN_AKCINCO"/>
+                <valItem ident="KOTZ'I'J"/>
+                <valItem ident="KOTZB'ALAM"/>
+                <valItem ident="KUCHUMA_KIK'"/>
+                <valItem ident="KUMATZ"/>
+                <valItem ident="KUMATZ_AMAQ'"/>
+                <valItem ident="KUNAB'AL_TOJIL"/>
+                <valItem ident="KUWATEPECH_KQONCE"/>
+                <valItem ident="LA_ISLA_ESPANOLA"/>
+                <valItem ident="LAMAKIB'"/>
+                <valItem ident="LOLMET_KEJNAY"/>
+                <valItem ident="LOTZ_KIK'"/>
+                <valItem ident="MAJUK'UTAJ"/>
+                <valItem ident="MAK_EK'"/>
+                <valItem ident="MAKAMOB'"/>
+                <valItem ident="MAQ'A"/>
+                <valItem ident="MARIA"/>
+                <valItem ident="ME'AWAN"/>
+                <valItem ident="MEXICO"/>
+                <valItem ident="MIXKINA"/>
+                <valItem ident="MOLAY"/>
+                <valItem ident="MOTZ"/>
+                <valItem ident="NAKXIT"/>
+                <valItem ident="NIJA'IB'"/>
+                <valItem ident="NIK'AQAJ_TAQ'AJ"/>
+                <valItem ident="NIM_AQ"/>
+                <valItem ident="NIM_CH'OKOJ"/>
+                <valItem ident="NIM_CH'OKOJ_KAWEQ"/>
+                <valItem ident="NIM_CH'OKOJ_NIJA'IB'"/>
+                <valItem ident="NIM_XO'L"/>
+                <valItem ident="NIM_XOB'_KARCHAJ"/>
+                <valItem ident="NIMA_CH'OKOJ"/>
+                <valItem ident="NIMA_K'AMJA"/>
+                <valItem ident="NIMA_LOLMET_YE'OLTUX"/>
+                <valItem ident="NIMA_SIS"/>
+                <valItem ident="NOJ"/>
+                <valItem ident="NU'_SIWAN"/>
+                <valItem ident="ORDEN_DE_PREDICADORES"/>
+                <valItem ident="OXIB'_KEJ_KQDOCE"/>
+                <valItem ident="OXIB_RI_NIM_JA"/>
+                <valItem ident="PA_AWILIX"/>
+                <valItem ident="PA_MAK'A'"/>
+                <valItem ident="PA_TOJIL"/>
+                <valItem ident="PACHQ'AB'"/>
+                <valItem ident="PAK'AM"/>
+                <valItem ident="PALO"/>
+                <valItem ident="PATAN"/>
+                <valItem ident="PAXIL"/>
+                <valItem ident="PEDRO_APIANO"/>
+                <valItem ident="PEK_UL_YA'"/>
+                <valItem ident="PEQ"/>
+                <valItem ident="POM"/>
+                <valItem ident="POPOL_WINAQ_CHI_T'UY"/>
+                <valItem ident="POPOL_WINAQ_PA_JOM_TZALATZ'"/>
+                <valItem ident="POPOL_WUJ"/>
+                <valItem ident="PUCH_IYA"/>
+                <valItem ident="PUJ_CHI_JA'"/>
+                <valItem ident="PUJ_YA'"/>
+                <valItem ident="PUJUYU'"/>
+                <valItem ident="PUSB'AL_CHAAJ"/>
+                <valItem ident="Q'ALEL"/>
+                <valItem ident="Q'ALEL_ACHIJ"/>
+                <valItem ident="Q'ALEL_AJAW"/>
+                <valItem ident="Q'ALEL_K'AMJA"/>
+                <valItem ident="Q'ALEL_SAQIK"/>
+                <valItem ident="Q'ANA_B'E"/>
+                <valItem ident="Q'AQ'_LAQAM_AKTRES"/>
+                <valItem ident="Q'EQA_B'E"/>
+                <valItem ident="Q'EQUMA_JA"/>
+                <valItem ident="Q'INOM"/>
+                <valItem ident="Q'OJOM"/>
+                <valItem ident="Q'OL"/>
+                <valItem ident="Q'oq"/>
+                <valItem ident="Q'UKUMATZ"/>
+                <valItem ident="Q'UKUMATZ_KQCINCO"/>
+                <valItem ident="Q'UMARKAJ"/>
+                <valItem ident="XIMENEZ"/>
+                <valItem ident="RAB'INALEB'"/>
+                <valItem ident="RAJAWAL_XIB'ALB'A"/>
+                <valItem ident="RAJPOP"/>
+                <valItem ident="RAJPOP_ACHIJ"/>
+                <valItem ident="RAJTZ'ALAM_ACHIJ"/>
+                <valItem ident="RATI'T_Q'IJ"/>
+                <valItem ident="RATI'T_SAQ"/>
+                <valItem ident="RAXA_B'E"/>
+                <valItem ident="RAXA_KAQULJA"/>
+                <valItem ident="RAXA_NANAWAK"/>
+                <valItem ident="AQUINAS"/>
+                <valItem ident="SAKIL"/>
+                <valItem ident="SALMANASAR"/>
+                <valItem ident="SAN_ANTON_ILOCAB"/>
+                <valItem ident="SAN_JUAN_BAUTISTA"/>
+                <valItem ident="SAN_PABLO"/>
+                <valItem ident="FERRER"/>
+                <valItem ident="SANIK"/>
+                <valItem ident="SANTA_CRUZ"/>
+                <valItem ident="SAQAJIB"/>
+                <valItem ident="SAQI_B'E"/>
+                <valItem ident="SAQI_NIM_AQ_SIS"/>
+                <valItem ident="SAQI_YA"/>
+                <valItem ident="SAQIK"/>
+                <valItem ident="SAQIKAS"/>
+                <valItem ident="SAQIKAS"/>
+                <valItem ident="SAQKABAJA"/>
+                <valItem ident="SAQULEWAB'"/>
+                <valItem ident="SATANAS"/>
+                <valItem ident="SILISIB'"/>
+                <valItem ident="SIPAKNA"/>
+                <valItem ident="SIS"/>
+                <valItem ident="SITA'L"/>
+                <valItem ident="SIYAJA"/>
+                <valItem ident="SOCHOJ"/>
+                <valItem ident="SOR_OBISPO"/>
+                <valItem ident="SOTZ'I_JA"/>
+                <valItem ident="SOTZI_JA_CHIMALKAN"/>
+                <valItem ident="SU_MAJESTAD"/>
+                <valItem ident="SU'"/>
+                <valItem ident="SUYWA"/>
+                <valItem ident="TAMASUL"/>
+                <valItem ident="TAMUB'"/>
+                <valItem ident="TAP"/>
+                <valItem ident="TAPA'L"/>
+                <valItem ident="TEKUM"/>
+                <valItem ident="TEKUM_KQTRECE"/>
+                <valItem ident="TEKUM_KQNUEVE"/>
+                <valItem ident="TEPEPUL"/>
+                <valItem ident="TEPEPUL_KQOCHO"/>
+                <valItem ident="TEPEPUL_KQTRECE"/>
+                <valItem ident="TEPEPUL_KQSEIS"/>
+                <valItem ident="TEPEPUL_KQNUEVE"/>
+                <valItem ident="TEPEW"/>
+                <valItem ident="TEPEW_OLOMAN"/>
+                <valItem ident="TEPEW_Q'UKUMATZ"/>
+                <valItem ident="TIJOB'AL_JA"/>
+                <valItem ident="TINAMIT_K'ICHE'"/>
+                <valItem ident="TOJIL"/>
+                <valItem ident="TUJAL_JA"/>
+                <valItem ident="TUKUMB'ALAM"/>
+                <valItem ident="TUKUR"/>
+                <valItem ident="TULÁN"/>
+                <valItem ident="TULUL"/>
+                <valItem ident="TZ'AQOL"/>
+                <valItem ident="TZ'IKIN"/>
+                <valItem ident="TZ'ITE'"/>
+                <valItem ident="TZ'OLOJ_CHE'"/>
+                <valItem ident="TZ'UM"/>
+                <valItem ident="TZ'UNUNI_JA'"/>
+                <valItem ident="TZ'UTUJA"/>
+                <valItem ident="TZAMIY"/>
+                <valItem ident="TZIMA"/>
+                <valItem ident="UCH'AB'AJA"/>
+                <valItem ident="UCHUCH_K'AMJA"/>
+                <valItem ident="UK'"/>
+                <valItem ident="UK'U'X_CHO"/>
+                <valItem ident="UK'U'X_KAJ"/>
+                <valItem ident="UK'U'X_KAJ_UK'U'X_ULEW"/>
+                <valItem ident="UK'U'X_PALO"/>
+                <valItem ident="UK'U'X_ULEW"/>
+                <valItem ident="UMUL"/>
+                <valItem ident="US"/>
+                <valItem ident="USAMAJEL_XIB'ALB'A"/>
+                <valItem ident="UTIW"/>
+                <valItem ident="UTZUTZIL_JOM"/>
+                <valItem ident="UTZA'M_ACHIJ"/>
+                <valItem ident="WA"/>
+                <valItem ident="WACHSOT"/>
+                <valItem ident="WAJXALAJUJ"/>
+                <valItem ident="WAJXAQIB'_K'AM_KQDIEZ"/>
+                <valItem ident="WAK"/>
+                <valItem ident="WILA'"/>
+                <valItem ident="WINAQ_B'ALAM_AKNUEVE"/>
+                <valItem ident="WOK"/>
+                <valItem ident="WONON"/>
+                <valItem ident="WUB"/>
+                <valItem ident="WUCH'"/>
+                <valItem ident="WUQUB'_AJ_AKSEIS"/>
+                <valItem ident="WUQUB'_JUNAJPU"/>
+                <valItem ident="WUQUB'_KAME'"/>
+                <valItem ident="WUQUB'_KAQIX"/>
+                <valItem ident="WUQUB'_NO'J_KQONCE"/>
+                <valItem ident="XA_Q'ANA_JAL"/>
+                <valItem ident="XA'N"/>
+                <valItem ident="XAJB'AKYEJ"/>
+                <valItem ident="XAJOJ_KUX"/>
+                <valItem ident="XAJOJ_PUJUY"/>
+                <valItem ident="XAYAB'AJ"/>
+                <valItem ident="XB'ALAMQ'E"/>
+                <valItem ident="XELAJUJ"/>
+                <valItem ident="XIB'ALB'A"/>
+                <valItem ident="XIK"/>
+                <valItem ident="XIK"/>
+                <valItem ident="XIKIRIPAT"/>
+                <valItem ident="XMUKUR"/>
+                <valItem ident="XOCHIQUETZAL"/>
+                <valItem ident="XPIYAKOK"/>
+                <valItem ident="XPURPUWEQ"/>
+                <valItem ident="XTZUL"/>
+                <valItem ident="XULU"/>
+                <valItem ident="XUXULIM_JA"/>
+                <valItem ident="YA'XKANUL"/>
+                <valItem ident="YACHWACH"/>
+                <valItem ident="YAK"/>
+                <valItem ident="YAKI"/>
+                <valItem ident="TEPEW_YAKI"/>
+                <valItem ident="YAKOLATAM"/>
+                <valItem ident="YAKOLATAM_UTZA'M_POP_SAQLATOL"/>
+                <valItem ident="YOLKWAT_KITZALKWAT"/>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec>
 
       </schemaSpec>
     </body>
