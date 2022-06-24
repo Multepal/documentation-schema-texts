@@ -7,10 +7,10 @@
   <teiHeader>
     <fileDesc>
       <titleStmt>
-        <title>Popol Wuj Encoding Guidelines</title>
+        <title>General schema of texts encoded for the Multepal Project</title>
       </titleStmt>
       <publicationStmt>
-        <authority> Prepared in TEI P5 by Aldo Ismael Barriente and Winnie Pérez Martínez at the
+        <authority>Prepared in TEI P5 by Aldo Ismael Barriente and Winnie Pérez Martínez at the
           University of Virginia. </authority>
         <publisher>Multepal Project</publisher>
         <availability default="false" status="free">
@@ -27,7 +27,7 @@
   </teiHeader>
   <text>
     <body>
-      <schemaSpec defaultExceptions="http://www.tei-c.org/ns/1.0 teix:egXML" ident="oddex1"
+      <schemaSpec defaultExceptions="http://www.tei-c.org/ns/1.0 teix:egXML" ident="mul_odd"
         mode="add" ns="http://www.tei-c.org/ns/1.0" predeclare="false" start="TEI" status="draft">
         <moduleRef include="pc span" key="analysis"/>
         <moduleRef key="core"/>
@@ -88,10 +88,8 @@
           </attList>
         </classSpec>
         
-        
-        
         <!-- TEXTSTRUCTURE: Adding attribute to element classess -->
-        <elementSpec ident="div" mode="change" module="textstructure">
+        <!-- <elementSpec ident="div" mode="change" module="textstructure">
           <attList>
             <attDef ident="type" mode="replace" usage="req">
               <valList type="closed">
@@ -101,7 +99,7 @@
               </valList>
             </attDef>
           </attList>
-        </elementSpec>
+        </elementSpec> -->
 
         <classSpec type="atts" module="core" ident="att.placement" mode="change">
           <attList>
@@ -117,7 +115,7 @@
           </attList>
         </classSpec>
 
-
+        <!-- Below might be unnecessary with following <elementSpec> -->
         <constraintSpec ident="rsAnaCheck" mode="add" predeclare="false" scheme="schematron">
           <constraint>
             <sch:rule context="tei:TEI//@ana">
@@ -126,6 +124,7 @@
             </sch:rule>
           </constraint>
         </constraintSpec>
+
         <elementSpec ident="rs" mode="change" module="core" xml:lang="quc">
           <attList>
             <attDef ident="ana" mode="replace" usage="req">
