@@ -133,6 +133,7 @@
             3) Right click, scroll to 'Source' and then click 'Canonicalize'
             4) Leave default options and click on the 'Canonicalize' button
         -->
+        <!-- NOTE: @href should be updated depending on where the ana values is located -->
         <xi:include href="../transformations/ana/ana_odd_values.xml"/>
         
       </schemaSpec>
