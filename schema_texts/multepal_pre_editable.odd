@@ -1,0 +1,141 @@
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_odds.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0"
+  xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xi="http://www.w3.org/2001/XInclude"
+  version="2.9.1" xml:lang="en">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>General schema of texts encoded for the Multepal Project</title>
+      </titleStmt>
+      <publicationStmt>
+        <authority>Prepared in TEI P5 by Aldo Ismael Barriente and Winnie Pérez Martínez at the
+          University of Virginia. </authority>
+        <publisher>Multepal Project</publisher>
+        <availability default="false" status="free">
+          <p part="N"/>
+
+        </availability>
+      </publicationStmt>
+
+      <sourceDesc>
+        <p>Born digital, based on the Mayan literature research done by http://multepal.spanitalport.virginia.edu/users</p>
+      </sourceDesc>
+    </fileDesc>
+
+  </teiHeader>
+  <text>
+    <body>
+      <schemaSpec defaultExceptions="http://www.tei-c.org/ns/1.0 teix:egXML" ident="mul_odd"
+        mode="add" ns="http://www.tei-c.org/ns/1.0" predeclare="false" start="TEI" status="draft">
+        <moduleRef include="pc span" key="analysis"/>
+        <moduleRef key="core"/>
+        <moduleRef key="drama"/>
+        <moduleRef key="header"/>
+        <moduleRef include="seg" key="linking"/>
+        <moduleRef key="msdescription"/>
+        <moduleRef include="orgName persName person" key="namesdates"/>
+        <moduleRef key="tagdocs"/>
+        <moduleRef key="tei"/>
+        <moduleRef exclude="div1 div2 div3 div4 div5 div6 div7" key="textstructure"/>
+        <moduleRef include="space" key="transcr"/>
+        <moduleRef key="spoken"/>
+        
+        <!-- Adding attribute values to element classes -->
+        <classSpec type="atts" module="core" ident="att.placement" mode="change">
+          <attList>
+            <attDef ident="place" mode="change" usage="opt">
+              <valList type="semi" mode="add">
+                <valItem ident="margin(left)"/>
+                <valItem ident="margin(right)"/>
+                <valItem ident="margin(single-col)"/>
+                <valItem ident="margin(bottom)"/>
+                <valItem ident="margin(middle)"/>
+              </valList>
+            </attDef>
+          </attList>
+        </classSpec>
+        
+        <classSpec type="atts" module="tei" ident="att.global.rendition" mode="change">
+          <attList>
+            <attDef ident="rend" mode="change" usage="opt">
+              <valList type="semi" mode="add">
+                <valItem ident="indent(hanging)"/>
+                <valItem ident="indent(default)"/>
+                <valItem ident="indent(full-indent)"/>
+                <valItem ident="align(center)"/>
+                <valItem ident="align(justified)"/>
+                <valItem ident="align(single-line)"/>
+                <valItem ident="text-style(bold)"/>
+                <valItem ident="text-style(italic)"/>
+                <valItem ident="text-style(caps)"/>
+                <valItem ident="text-style(underline)"/>
+                <valItem ident="text-style(overstrike)"/>
+                <valItem ident="text-style(strikethrough)"/>
+                <valItem ident="text-style(sup)"/>
+                <valItem ident="text-style(sub)"/>
+                <valItem ident="text-style(scribble)"/>
+                <valItem ident="text-style(double-underline)"/>
+                <valItem ident="size(large)"/>
+                <valItem ident="size(strong)"/>
+                <valItem ident="size(x-large)"/>
+                <valItem ident="size(xx-large)"/>
+                <valItem ident="outliers(border-left)"/>
+                <valItem ident="outliers(border-right)"/>
+              </valList>
+            </attDef>
+          </attList>
+        </classSpec>
+        
+        <!-- TEXTSTRUCTURE: Adding attribute to element classess -->
+        <!-- <elementSpec ident="div" mode="change" module="textstructure">
+          <attList>
+            <attDef ident="type" mode="replace" usage="req">
+              <valList type="closed">
+                <valItem ident="toc">
+                  <desc>K'iche' word for section in Ximénez (?) </desc>
+                </valItem>
+              </valList>
+            </attDef>
+          </attList>
+        </elementSpec> -->
+
+        <classSpec type="atts" module="core" ident="att.placement" mode="change">
+          <attList>
+            <attDef ident="place" mode="change" usage="opt">
+              <valList type="closed">
+                <valItem ident="margin(left)" />
+                <valItem ident="margin(right)" />
+                <valItem ident="margin(single-col)" />
+                <valItem ident="margin(bottom)" />
+                <valItem ident="margin(middle)" />
+              </valList>
+            </attDef>
+          </attList>
+        </classSpec>
+
+        <!-- Below might be unnecessary with following <elementSpec> -->
+        <constraintSpec ident="rsAnaCheck" mode="add" predeclare="false" scheme="schematron">
+          <constraint>
+            <sch:rule context="tei:TEI//@ana">
+              <sch:report role="warning" test="matches(., '[a-z]+')"> @ana attribute values must be
+                written in uppercase. </sch:report>
+            </sch:rule>
+          </constraint>
+        </constraintSpec>
+        
+        <!-- include used to import allowed values for the @ana attribute on <rs> elements -->
+
+        <!-- To include:
+            1) Enter oXygen 
+            2) Highlight the entire <xi:include> tag
+            3) Right click, scroll to 'Source' and then click 'Canonicalize'
+            4) Leave default options and click on the 'Canonicalize' button
+        -->
+        <xi:include href="../transformations/ana/ana_odd_values.xml"/>
+        
+      </schemaSpec>
+    </body>
+  </text>
+</TEI>
