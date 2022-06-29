@@ -16,14 +16,11 @@
             </sourceDesc>
         </fileDesc>
         <encodingDesc>
-            <p>For individual lines, there is an space element with a quantity attribute that determines how that line aligns with the previous line.
-            This value indicates how many whitespaces must be added to the beginning of the line string 
-            in order to preserve alignment.
-            </p>
-            
-        <editorialDecl>
-            <p></p>
-        </editorialDecl>
+           <editorialDecl> 
+               <p>For individual lines, there is an space element with a quantity attribute that determines how that line aligns with the previous line.
+                This value indicates how many whitespaces must be added to the beginning of the line string 
+                in order to preserve alignment.</p>
+           </editorialDecl>
         </encodingDesc>
         <profileDesc>
         <langUsage>

@@ -1,139 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
     xmlns:tei="http://www.tei-c.org/ns/1.0"
-    exclude-result-prefixes="xs tei"
-    version="2.0">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xpath-default-namespace="http://www.tei-c.org/ns/1.0" 
+    xmlns="http://www.tei-c.org/ns/1.0"
+    exclude-result-prefixes="#all" 
+    version="3.0">
+    
+    <xsl:mode on-no-match="shallow-copy"/>
+    
     <xsl:output method="xml" version="1.0" encoding="UTF-8" indent="yes"/>
     
     <!-- *START TEI header*  -->
     
     <!-- matches ?xml -->
     <xsl:template match="/">
-        <xsl:copy />
-        <xsl:apply-templates /> 
+        <xsl:result-document method="xml" indent="yes" href="output/lit0001.pw0002.popolwuj-colop-pk.xml">
+            <xsl:copy />
+            <xsl:apply-templates />
+        </xsl:result-document>
     </xsl:template> 
     
     <!-- matches root TEI element -->
-    <xsl:template match="tei:TEI">
+    <xsl:template match="TEI">
         <xsl:copy>
             <xsl:apply-templates />
         </xsl:copy>
     </xsl:template>
     
     <!-- matches TEI header -->
-    <xsl:template match="tei:teiHeader">
+    <xsl:template match="teiHeader">
         <xsl:copy>
             <xsl:apply-templates />
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="tei:fileDesc">
+    <xsl:template match="fileDesc">
         <xsl:copy>
             <xsl:apply-templates />
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="tei:titleStmt">
+    <xsl:template match="titleStmt">
         <xsl:copy>
-            <xsl:copy-of select="tei:title" />
+            <xsl:copy-of select="title" />
             
-            <xsl:copy-of select="tei:author" />
+            <xsl:copy-of select="author" />
             
             <!-- UPDATE BEFORE RUNNING -->
-            <tei:respStmt>
-                <tei:resp>Worked on transitioning the TEI paragraphs edition to be CTS-compliant</tei:resp>
-                <tei:orgName ref="http://multepal.spanitalport.virginia.edu/">Multepal</tei:orgName>
-                <tei:persName role="principal">Aldo Barriente</tei:persName> 
-                <tei:persName role="editor">Allison Bigelow</tei:persName>
-                <tei:persName role="editor">Rafael Alvarado</tei:persName>
-            </tei:respStmt>
+            <respStmt>
+                <resp>Encoding and maintenance of Luis Enrique Sam Colop's 1999 Versión Poética K'iche' </resp>
+                <orgName ref="http://multepal.spanitalport.virginia.edu/">Multepal</orgName>
+                <persName role="principal">Aldo Barriente</persName> 
+                <persName role="editor">Allison Bigelow</persName>
+                <persName role="editor">Rafael Alvarado</persName>
+            </respStmt>
             <!-- END UPDATE -->
             
         </xsl:copy>
     </xsl:template>
     
-    <xsl:template match="tei:publicationStmt">
-        <xsl:copy>
-            <xsl:copy-of select="node()" />
-        </xsl:copy>
-    </xsl:template>
-    
-    <xsl:template match="tei:sourceDesc">
-        <xsl:copy>
-            <xsl:copy-of select="node()" />
-        </xsl:copy>
-    </xsl:template>
-    
     <!-- UPDATE BEFORE RUNNING - TEXT STRUCTURE -->
-    <xsl:template match="tei:encodingDesc">
+    <xsl:template match="encodingDesc">
         <xsl:copy>
-            <tei:editorialDecl>
-                <tei:p>This text is the Castellano column of the Ximenez edition of the Popol Wuj. Because of nature of CTS's unique identifiers
-                    us to separate it from the K'iche' column, which is stored as another "work" of the text according to CTS structure.</tei:p>
-            </tei:editorialDecl>
             
-            <tei:p>The following text is encoded in accordance with TEI standards and with the CTS/CITE Architecture</tei:p>
+            <p>The following text is encoded in accordance with TEI standards and with the CTS/CITE Architecture</p>
             
-            <tei:refsDecl n="CTS">
-                <tei:cRefPattern n="paragraph" 
-                    matchPattern="(\w+)" 
-                    replacementPattern="#xpath(/tei:TEI/tei:text/tei:body/tei:div/tei:p[@n='$1'])">
-                    <tei:p>pointer pattern extracting paragraph</tei:p>
-                </tei:cRefPattern>
-            </tei:refsDecl>
-            <tei:refsDecl>
-                <tei:refState unit="paragraph"/>
-            </tei:refsDecl>
+            <refsDecl n="CTS">
+                <cRefPattern n="l" 
+                    matchPattern="(\w+).(\w+).(\w+)" 
+                    replacementPattern="#xpath(/TEI/text/body/div[@n='$1']/lg[@n='$2']/l[@n='$3'])">
+                    <p>pointer pattern extracting line</p>
+                </cRefPattern>
+                <cRefPattern n="lg"
+                    matchPattern="(\w+).(\w+)"
+                    replacementPattern="#xpath(/TEI/text/body/div[@n='1']/lg[@n='$2'])">
+                    <p>pointer pattern extracting line group</p>
+                </cRefPattern>
+                <cRefPattern n="div"
+                    matchPattern="(\w+)"
+                    replacementPattern="#xpath(/TEI/text/body/div[@n='$1'])">
+                    <p>pointer pattern extracting part</p>
+                </cRefPattern>
+                
+            </refsDecl>
+            <refsDecl>
+                <refState unit="line"/>
+                <refState unit="lg"/>
+                <refState unit="div"/>
+            </refsDecl>
         </xsl:copy>
     </xsl:template>
     
     <!-- END UPDATE -->
     
-    <xsl:template match="tei:profileDesc">
-        <xsl:copy>
-            <xsl:copy-of select="node()" />
-        </xsl:copy>
-    </xsl:template>
-    
     <!-- END TEI HEADER -->
     
     <!-- START TEXT -->
     
-    <xsl:template match="tei:text">
-        <xsl:copy>
-            <xsl:attribute name="n">urn:cts:mayaLit:lit0001.pw0002.colop-pk</xsl:attribute>
+    <xsl:template match="text">
+        <text n="urn:cts:mayaLit:lit0001.pw0002.popolwuj-colop-pk">
             <xsl:apply-templates />
-        </xsl:copy>
+        </text>
     </xsl:template>
-    
-    <xsl:template match="tei:front">
-        <xsl:copy>
-            <xsl:copy-of select="node()" />
-        </xsl:copy>
-    </xsl:template>
-    
-    <xsl:template match="tei:body">
-        <xsl:copy>
-            <xsl:attribute name="n">urn:cts:mayaLit:lit0001.pw0002.colop-pk</xsl:attribute>
+
+    <xsl:template match="body">
+        <body n="urn:cts:mayaLit:lit0001.pw0002.popolwuj-colop-pk">
             <xsl:apply-templates />
-        </xsl:copy>
+        </body>
     </xsl:template>
     
-    <xsl:template match="tei:body/tei:div">
-        <xsl:copy>
-            <xsl:attribute name="type">nimatasik</xsl:attribute>
-            <xsl:copy-of select="node()" />
-        </xsl:copy>
+    <!-- ADD @n values here -->
+    <xsl:template match="body/div">
+        <div type="nimatasik" n="{count(preceding-sibling::node())}">
+            <xsl:apply-templates/>
+        </div>
     </xsl:template>
     
-    <xsl:template match="tei:back">
-        <xsl:copy>
-            <xsl:copy-of select="node()" />
-        </xsl:copy>
+    <xsl:template match="div/lg">
+        <lg type="{@type}" xml:id="{@xml:id}" n="{tokenize(@xml:id, '\.')[last()]}">
+            <xsl:apply-templates/>
+        </lg>
     </xsl:template>
-    
     
     <!--  END TEXT  -->
     
+    
 </xsl:stylesheet>
+    
+    
