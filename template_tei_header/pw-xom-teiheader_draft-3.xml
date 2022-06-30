@@ -115,11 +115,11 @@ CC-BY-NC-SA: allows reusers to distribute, remix, adapt, and build upon the mate
      
       <encodingDesc>
          <projectDesc>
-            <!--Provides details for the main reason/purpose that led to the creation of the electronic text. See sample text below.-->
             <p>This encoding of the Ximénez manuscript provides relevant contextual and paratextual information to ease the process of studying and analyzing the Popol Wuj.</p>
          </projectDesc>
          
          <editorialDecl>
+            <!-- Pending verification -->
             <p>It allows for line by line search and provides additional, crowdsourced annotations that include the realm of topics present in the narrative. Special characters are maintained in the main text, but transformed into roman alphabet characters to increase searchability of content.</p>
             <p>The following text is encoded in accordance with TEI standards and with the CTS/CITE Architecture</p>
          </editorialDecl>
@@ -143,7 +143,7 @@ CC-BY-NC-SA: allows reusers to distribute, remix, adapt, and build upon the mate
          </langUsage>
          
          <textDesc>
-            <channel mode="m">The stories in the text were part of Mayan oral tradition, but written into a manuscript by Spanish colonial friar Francisco Ximénez.</channel>
+            <channel mode="m">oral and pictographic traditions (pre-1492), Popol Wuj (1554-58), manuscript copy (1701-1703)</channel>
             <constitution type="composite">The manuscript by Ximénez is comprised of several folios he calls "escolios," and some of them make up the text known as the Popol Wuj.</constitution>
             <derivation type="traditional"/>
             <domain>Catholic and colonial discourse of Mayan people</domain>
